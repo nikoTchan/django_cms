@@ -3,6 +3,7 @@ from django.conf.urls.defaults import *
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
+import os.path
 
 urlpatterns = patterns('',
     # Example:
@@ -15,7 +16,7 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
 		
     (r'^tiny_mce/(?P<path>.*)$', 'django.views.static.serve',
-								 {'document_root': '/Users/marc/Sites/django_cms/jscripts/tiny_mce/'}),
+		  {'document_root': os.path.join(os.path.abspath(os.path.dirname(__file__)), 'jscripts/tiny_mce').replace('\\','/')}),
     (r'^search/$', 'django_cms.search.views.search'),
     (r'', include('django.contrib.flatpages.urls')),
 )

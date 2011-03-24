@@ -1,4 +1,5 @@
 # Django settings for django_cms project.
+import os.path
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -9,10 +10,12 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+SETTINGS_DIR = os.path.abspath(os.path.dirname(__file__)).replace('\\','/')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/Users/marc/Sites/django_cms/cms.db',                      # Or path to database file if using sqlite3.
+        'NAME': os.path.join(SETTINGS_DIR, 'cms.db'), # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -78,7 +81,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'django_cms.urls'
 
 TEMPLATE_DIRS = (
-		"/Users/marc/Sites/django_cms/templates"
+		os.path.join(SETTINGS_DIR, 'templates').replace('\\','/')
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
