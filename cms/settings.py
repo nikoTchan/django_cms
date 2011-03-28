@@ -11,6 +11,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 SETTINGS_DIR = os.path.abspath(os.path.dirname(__file__)).replace('\\','/')
+ROOT_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__))).replace('\\','/')
 
 DATABASES = {
     'default': {
@@ -78,10 +79,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'django_cms.urls'
+ROOT_URLCONF = 'cms.urls'
 
 TEMPLATE_DIRS = (
-		os.path.join(SETTINGS_DIR, 'templates').replace('\\','/')
+		os.path.join(ROOT_DIR, 'templates').replace('\\','/')
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -98,5 +99,5 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'django.contrib.flatpages',
-    'django_cms.search'
+    'cms.search'
 )
