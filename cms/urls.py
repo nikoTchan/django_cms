@@ -5,7 +5,7 @@ from django.contrib import admin
 admin.autodiscover()
 import os.path
 
-ROOT_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__))).replace('\\','/')
+ROOT_DIR = os.path.abspath(os.path.join('..', os.path.dirname(__file__))).replace('\\','/')
 STATIC_ROOT = os.path.join(ROOT_DIR, 'static').replace('\\','/')
 
 urlpatterns = patterns('',

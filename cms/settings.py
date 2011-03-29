@@ -1,4 +1,4 @@
-# Django settings for django_cms project.
+# Django settings for cms project.
 import os.path
 
 DEBUG = True
@@ -11,7 +11,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 SETTINGS_DIR = os.path.abspath(os.path.dirname(__file__)).replace('\\','/')
-ROOT_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__))).replace('\\','/')
+ROOT_DIR = os.path.abspath(os.path.join('..', os.path.dirname(__file__))).replace('\\','/')
 
 DATABASES = {
     'default': {
