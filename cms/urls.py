@@ -5,8 +5,8 @@ from django.contrib import admin
 admin.autodiscover()
 import os.path
 
-ROOT_DIR = os.path.abspath(os.path.join('..', os.path.dirname(__file__))).replace('\\','/')
-STATIC_ROOT = os.path.join(ROOT_DIR, 'static').replace('\\','/')
+ROOT_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__))).replace('\\','/')
+STATIC_DIR = os.path.join(ROOT_DIR, 'static').replace('\\','/')
 
 urlpatterns = patterns('',
     # Example:
@@ -19,7 +19,7 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
 		
     (r'^tiny_mce/(?P<path>.*)$', 'django.views.static.serve',
-		  {'document_root': os.path.join(STATIC_ROOT, 'js/tiny_mce').replace('\\','/')}),
+		  {'document_root': os.path.abspath(os.path.join(STATIC_DIR, 'js/tiny_mce')).replace('\\','/')}),
     (r'^search/$', 'cms.search.views.search'),
     (r'', include('django.contrib.flatpages.urls')),
 )
