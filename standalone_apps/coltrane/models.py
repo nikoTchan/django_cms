@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 class Category(models.Model):
   title = models.CharField(max_length=250, help_text='Maximum 250 characters.')
@@ -19,5 +20,5 @@ class Entry(models.Model):
   title = models.CharField(max_length=250)
   excerpt = models.TextField(blank=True)
   body = models.TextField()
-  pub_date = models.DateTimeField()
+  pub_date = models.DateTimeField(default=datetime.datetime.now)
   slug = models.SlugField(unique_for_date='pub_date')
