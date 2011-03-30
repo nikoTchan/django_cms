@@ -11,7 +11,7 @@ class CategoryAdmin(admin.ModelAdmin):
   search_fields = ['title']
 
 class EntryAdmin(admin.ModelAdmin):
-  pass
+  prepopulated_fields = { 'slug': ['title'] }
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Entry, EntryAdmin)
