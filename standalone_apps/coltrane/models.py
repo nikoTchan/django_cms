@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from django.contrib.auth.models import User
 
 class Category(models.Model):
   title = models.CharField(max_length=250, help_text='Maximum 250 characters.')
@@ -22,3 +23,4 @@ class Entry(models.Model):
   body = models.TextField()
   pub_date = models.DateTimeField(default=datetime.datetime.now)
   slug = models.SlugField(unique_for_date='pub_date')
+  author = models.ForeignKey(User)
