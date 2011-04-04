@@ -18,6 +18,14 @@ class Category(models.Model):
     return "/categories/%s/" % self.slug
 
 class Entry(models.Model):
+  LIVE_STATUS = 1
+  DRAFT_STATUS = 2
+  HIDDEN_STATUS = 3
+  STATUS_CHOICES = (
+    (LIVE_STATUS, 'Live'),
+    (DRAFT_STATUS, 'Draft'),
+    (HIDDEN_STATUS, 'Hidden'),
+  )
   title = models.CharField(max_length=250)
   excerpt = models.TextField(blank=True)
   body = models.TextField()
@@ -26,3 +34,8 @@ class Entry(models.Model):
   author = models.ForeignKey(User)
   enable_comments = models.BooleanField(default=True)
   featured = models.BooleanField(default=False)
+  status = models.IntegerField(choices=STATUS_CHOICES, default=LIVE_STATUS)
+
+  class Meta:
+    ordering = ['title']
+    verbose_name_plural = "Entries"
