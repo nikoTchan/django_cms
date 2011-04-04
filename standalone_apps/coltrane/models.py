@@ -1,6 +1,7 @@
 from django.db import models
 import datetime
 from django.contrib.auth.models import User
+from tagging.fields import TagField
 
 class Category(models.Model):
   title = models.CharField(max_length=250, help_text='Maximum 250 characters.')
@@ -35,7 +36,12 @@ class Entry(models.Model):
   enable_comments = models.BooleanField(default=True)
   featured = models.BooleanField(default=False)
   status = models.IntegerField(choices=STATUS_CHOICES, default=LIVE_STATUS)
+  categories = models.ManyToManyField(Category)
+  tags = TagField()
 
   class Meta:
     ordering = ['title']
     verbose_name_plural = "Entries"
+
+  def __unicode__(self):
+    return self.title + ' (' + self.author.username + ')'
