@@ -12,6 +12,7 @@ MANAGERS = ADMINS
 
 SETTINGS_DIR = os.path.abspath(os.path.dirname(__file__)).replace('\\','/')
 ROOT_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__))).replace('\\','/')
+STATIC_DIR = os.path.join(ROOT_DIR, 'static').replace('\\','/')
 
 DATABASES = {
     'default': {
