@@ -40,8 +40,12 @@ class Entry(models.Model):
   tags = TagField()
 
   class Meta:
-    ordering = ['title']
+    ordering = ['-pub_date']
     verbose_name_plural = "Entries"
 
   def __unicode__(self):
     return self.title + ' (' + self.author.username + ')'
+
+  def get_absolute_ur(self):
+    date = self.pub_date.strftime("%Y/%b/%d").lower()
+    return "/weblog/%s/%s/" % (date, self.slug)
