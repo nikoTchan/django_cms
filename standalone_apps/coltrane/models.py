@@ -50,7 +50,7 @@ class Entry(models.Model):
   slug = models.SlugField(unique_for_date='pub_date',
                           help_text='Suggested value automatically generated from title. Must be unique.')
   status = models.IntegerField(choices=STATUS_CHOICES, default=LIVE_STATUS,
-                               help_text='Only entries with live status will be publicly displayed.'))
+                               help_text='Only entries with live status will be publicly displayed.')
 
   # Categorization.
   categories = models.ManyToManyField(Category)
