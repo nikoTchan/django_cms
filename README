@@ -1,1 +1,12 @@
-Provant django, tutorial Practical Django Projects 2nd edition. 
+# Provant django, tutorial Practical Django Projects 2nd edition.
+
+# Install django_tagging (http://code.google.com/p/django-tagging)
+wget http://django-tagging.googlecode.com/files/django-tagging-0.3.1.tar.gz
+tar -xvzf django-tagging-0.3.1.tar.gz
+cd django-tagging-0.3.1/
+sudo python setup.py install
+
+# Install Markdown :
+#   http://sourceforge.net/projects/python-markdown
+#   http://www.freewisdom.org/projects/python-markdown/Installation.
+sudo easy_install Markdown
