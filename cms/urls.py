@@ -19,5 +19,7 @@ urlpatterns = patterns('',
     (r'^tiny_mce/(?P<path>.*)$', 'django.views.static.serve',
 		  {'document_root': os.path.abspath(os.path.join(settings.STATIC_DIR, 'js/tiny_mce')).replace('\\','/')}),
     (r'^search/$', 'cms.search.views.search'),
+    (r'^weblog/$', 'coltrane.views.entries_index'),
+    (r'^weblog/(?P<year>\d{4})/(?P<month>\w{3})/(?P<day>\d{2})/(P?<slug>[-\w]+)/$', 'coltrane.views.entry_detail'),
     (r'', include('django.contrib.flatpages.urls')),
 )
