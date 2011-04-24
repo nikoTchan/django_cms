@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <title>{{ entry.title }}</title>
+  </head>
+  <body>
+    <h1>{{ entry.title }}</h1>
+    <p>Published on {{ entry.pub_date|date:"F j, Y" }}</p>
+    {% if entry.excerpt_html %}
+      <p>{{ entry.body_html|safe }}</p>
+    {% endif %}
+    <p><a href="/weblog/">back to all entries</a></p>
+  </body>
+</html>
