@@ -1,12 +1,12 @@
 <html>
   <head>
-    <title>{{ entry.title }}</title>
+    <title>{{ object.title }}</title>
   </head>
   <body>
-    <h1>{{ entry.title }}</h1>
-    <p>Published on {{ entry.pub_date|date:"F j, Y" }}</p>
-    {% if entry.excerpt_html %}
-      <p>{{ entry.body_html|safe }}</p>
+    <h1>{{ object.title }}</h1>
+    <p>Published on {{ object.pub_date|date:"F j, Y" }}</p>
+    {% if object.excerpt_html %}
+      <p>{{ object.body_html|safe }}</p>
     {% endif %}
     <p><a href="/weblog/">back to all entries</a></p>
   </body>
