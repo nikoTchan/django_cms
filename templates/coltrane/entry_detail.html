@@ -4,10 +4,16 @@
   </head>
   <body>
     <h1>{{ object.title }}</h1>
-    <p>Published on {{ object.pub_date|date:"F j, Y" }}</p>
+    <p>Published on
+      <a href="/weblog/{{ object.pub_date.year }}/{{ object.pub_date|date:'M'|lower }}/{{ object.pub_date|date:'d' }}/">
+        {{ object.pub_date|date:"F j, Y" }}
+      </a>
+    </p>
     {% if object.excerpt_html %}
       <p>{{ object.body_html|safe }}</p>
     {% endif %}
-    <p><a href="/weblog/">back to all entries</a></p>
+    <p><a href="/weblog/{{ object.pub_date|date:'Y' }}/{{ object.pub_date|date:'M'|lower }}/">
+        back to entries of {{ object.pub_date|date:"F" }}</a></p>
+    <p><a href="/weblog/">back to last entries</a></p>
   </body>
 </html>

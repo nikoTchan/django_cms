@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <title>All entries in {{ year }}</title>
+  </head>
+  <body>
+    <h1>Entries in {{ year }}</h1>
+    {% for date in date_list %}
+      <h2>{{ date.month }}, {{ date|date:"M"|lower }}</h2>
+      <p><a href="/weblog/{{ year }}/{{ date|date:'M'|lower }}/">{{ date|date:"F" }}</a></p>
+    {% endfor %}
+    <p><a href="/weblog/">back to last entries</a></p>
+  </body>
+</html>

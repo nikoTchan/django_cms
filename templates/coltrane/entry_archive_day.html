@@ -1,10 +1,10 @@
 <html>
   <head>
-    <title>Entries index</title>
+    <title>All entries in {{ day }}</title>
   </head>
   <body>
-    <h1>Entries index</h1>
-    {% for entry in entry_list %}
+    <h1>Entries in {{ day }}</h1>
+    {% for entry in object_list %}
       <h2>{{ entry.title }}</h2>
       <p>Published on {{ entry.pub_date|date:"F j, Y" }}</p>
       {% if entry.excerpt_html %}
@@ -14,5 +14,8 @@
       {% endif %}
       <p><a href="{{ entry.get_absolute_url }}">Read full entry</a></p>
     {% endfor %}
+    <p><a href="/weblog/{{ day|date:'Y' }}/{{ day|date:'M'|lower }}/">
+        back to entries of {{ day|date:"F" }}</a></p>
+    <p><a href="/weblog/">back to last entries</a></p>
   </body>
 </html>

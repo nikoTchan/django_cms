@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>All entries in {{ month|date:"F" }} {{ month.year }}</title>
+  </head>
+  <body>
+    <h1>Entries in {{ month|date:"F" }} {{ month.year }}</h1>
+    {% for entry in object_list %}
+      <h2>{{ entry.title }}</h2>
+      <p>Published on <a href="/weblog/{{ month.year }}/{{ month|date:'M'|lower }}/{{ entry.pub_date|date:'d' }}/">
+          {{ entry.pub_date|date:"F j, Y" }}</a></p>
+      {% if entry.excerpt_html %}
+        {{ entry.excerpt_html|safe }}
+      {% else %}
+        {{ entry.body_html|truncatewords_html:"50"|safe }}
+      {% endif %}
+      <p><a href="{{ entry.get_absolute_url }}">Read full entry</a></p>
+    {% endfor %}
+    <p><a href="/weblog/{{ month.year }}">back to year {{ month.year }}</a></p>
+    <p><a href="/weblog/">back to last entries</a></p>
+  </body>
+</html>
